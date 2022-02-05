@@ -6,14 +6,22 @@
 //
 
 import SwiftUI
+import Firebase
+import Purchases
 
 @main
 struct SwiftUI_AdvancedApp: App {
     let persistenceController = PersistenceController.shared
 
+    init() {
+        FirebaseApp.configure()
+//        Purchases.configure(withAPIKey: "")
+//        Purchases.logLevel = .debug
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SignupView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
